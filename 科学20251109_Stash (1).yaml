@@ -1,0 +1,370 @@
+proxies:
+- name: HK-SN-1-pqshkt
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: HK-HY-1-pqshkthy2
+  type: hysteria2
+  password: 2ebb7ac4
+  skip-cert-verify: 'true'
+  sni: www.bing.com
+- name: HK-SN-ggysg
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: HK-SN-pqshksnell-ali
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: HK-SS-HKT2-xng31l4azf-tx
+  type: ss
+  encrypt-method: 2022-blake3-aes-128-gcm
+  password: '"tYNN3FK9iLd6WvaSJbNkyA==:pBY44oSISTtyp5MncLNQBg=="'
+  udp-relay: 'true'
+- name: HK-SN-tinyhktsnellecozf
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: TW-SN-1-pqseco
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: TW-SN-2-pqshinet
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: TW-HY-1-pqshinet
+  type: hysteria2
+  password: 86a16c51
+  skip-cert-verify: 'true'
+  sni: www.bing.com
+- name: TW-SN-pqshinesnellzf
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: TW-SN-pqsecosnellzf
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: JP-SN-1-pqsjp
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: JP-SN-pqsjpsnell-tx
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: US-SN-1-ovh
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: US-SN-2-vps2593-cus338
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+- name: DMIT-laxsnell
+  type: snell
+  psk: pk@87691295
+  version: '3'
+  reuse: 'true'
+  tfo: 'true'
+  ecn: 'true'
+proxy-groups:
+- name: HK-Auto
+  type: url-test
+  proxies:
+  - HK-SN-1-pqshkt
+  - HK-HY-1-pqshkthy2
+  - HK-SN-ggysg
+  - HK-SN-pqshksnell-ali
+  - HK-SS-HKT2-xng31l4azf-tx
+  - HK-SN-tinyhktsnellecozf
+- name: TW-Auto
+  type: url-test
+  proxies:
+  - TW-SN-1-pqseco
+  - TW-SN-2-pqshinet
+  - TW-HY-1-pqshinet
+  - TW-SN-pqshinesnellzf
+  - TW-SN-pqsecosnellzf
+- name: JP-Auto
+  type: url-test
+  proxies:
+  - JP-SN-1-pqsjp
+  - JP-SN-pqsjpsnell-tx
+- name: US-Auto
+  type: url-test
+  proxies:
+  - DMIT-laxsnell
+  - US-SN-1-ovh
+  - US-SN-2-vps2593-cus338
+- name: All-Nodes
+  type: select
+  proxies:
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - HK-SN-1-pqshkt
+  - HK-HY-1-pqshkthy2
+  - HK-SN-ggysg
+  - TW-SN-1-pqseco
+  - TW-SN-2-pqshinet
+  - TW-HY-1-pqshinet
+  - JP-SN-1-pqsjp
+  - US-SN-1-ovh
+  - US-SN-2-vps2593-cus338
+  - DMIT-laxsnell
+  - HK-SN-pqshksnell-ali
+  - HK-SS-HKT2-xng31l4azf-tx
+  - HK-SN-tinyhktsnellecozf
+  - TW-SN-pqshinesnellzf
+  - TW-SN-pqsecosnellzf
+  - JP-SN-pqsjpsnell-tx
+  - DIRECT
+- name: Global-Auto
+  type: fallback
+  proxies:
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+- name: ChatGPT-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Telegram-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Netflix-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: YouTube-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Google-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Spotify-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Steam-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: TikTok-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Disney-Manual
+  type: select
+  proxies:
+  - All-Nodes
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: TW-Streaming
+  type: select
+  proxies:
+  - TW-Auto
+  - TW-SN-1-pqseco
+  - TW-SN-2-pqshinet
+  - TW-HY-1-pqshinet
+  - TW-SN-pqshinesnellzf
+  - TW-SN-pqsecosnellzf
+  - DIRECT
+- name: Game-UDP
+  type: select
+  proxies:
+  - TW-HY-1-pqshinet
+  - HK-HY-1-pqshkthy2
+  - HK-SN-1-pqshkt
+  - DIRECT
+- name: Apple-Policy
+  type: select
+  proxies:
+  - DIRECT
+  - Global-Auto
+- name: Microsoft-Policy
+  type: select
+  proxies:
+  - Global-Auto
+  - DIRECT
+- name: Speedtest
+  type: select
+  proxies:
+  - DIRECT
+  - Global-Auto
+  - HK-Auto
+  - JP-Auto
+- name: Default
+  type: select
+  proxies:
+  - Global-Auto
+  - DIRECT
+- name: Manual
+  type: select
+  proxies:
+  - HK-Auto
+  - TW-Auto
+  - JP-Auto
+  - US-Auto
+  - Global-Auto
+  - DIRECT
+- name: Mode
+  type: select
+  proxies:
+  - Default
+  - Global-Auto
+  - Manual
+  - DIRECT
+rules:
+- DOMAIN-SUFFIX,cn,DIRECT
+- DOMAIN-KEYWORD,baidu,DIRECT
+- DOMAIN-KEYWORD,qq,DIRECT
+- DOMAIN-KEYWORD,alipay,DIRECT
+- DOMAIN-KEYWORD,taobao,DIRECT
+- DOMAIN-KEYWORD,jd,DIRECT
+- DOMAIN-KEYWORD,bilibili,DIRECT
+- DOMAIN-SUFFIX,openai.com,ChatGPT-Manual
+- DOMAIN-SUFFIX,chatgpt.com,ChatGPT-Manual
+- DOMAIN-KEYWORD,openai,ChatGPT-Manual
+- PROCESS-NAME,ChatGPT,ChatGPT-Manual
+- DOMAIN-SUFFIX,telegram.org,Telegram-Manual
+- DOMAIN-SUFFIX,t.me,Telegram-Manual
+- DOMAIN-SUFFIX,cdn-telegram.org,Telegram-Manual
+- DOMAIN-SUFFIX,apple.com,Apple-Policy
+- DOMAIN-SUFFIX,icloud.com,Apple-Policy
+- DOMAIN-SUFFIX,microsoft.com,Microsoft-Policy
+- DOMAIN-SUFFIX,netflix.com,Netflix-Manual
+- DOMAIN-SUFFIX,youtube.com,YouTube-Manual
+- DOMAIN-SUFFIX,google.com,Google-Manual
+- DOMAIN-SUFFIX,spotify.com,Spotify-Manual
+- DOMAIN-SUFFIX,steampowered.com,Steam-Manual
+- DOMAIN-SUFFIX,tiktok.com,TikTok-Manual
+- DOMAIN-SUFFIX,disneyplus.com,Disney-Manual
+- DOMAIN-SUFFIX,cloudflare-dns.com,Global-Auto
+- DOMAIN-SUFFIX,dns.alidns.com,Global-Auto
+- DOMAIN-SUFFIX,doh.pub,Global-Auto
+- IP-CIDR,1.1.1.1/32,Global-Auto,no-resolve
+- IP-CIDR,1.0.0.1/32,Global-Auto,no-resolve
+- DOMAIN,pqshkt.ngrok.xin,DIRECT
+- DOMAIN,pqshinet.ngrok.xin,DIRECT
+- DOMAIN,iplcnatgdcm.yesclouds.com,DIRECT
+- DOMAIN,hrnat.yesclouds.com,DIRECT
+- IP-CIDR,81.71.137.181/32,DIRECT,no-resolve
+- IP-CIDR,8.134.89.34/32,DIRECT,no-resolve
+- IP-CIDR6,2405:cdc0:0:610:103:127:218:123/128,DIRECT,no-resolve
+- IP-CIDR,180.188.43.69/32,DIRECT,no-resolve
+- IP-CIDR,103.127.218.123/32,DIRECT,no-resolve
+- IP-CIDR,103.140.136.211/32,DIRECT,no-resolve
+- IP-CIDR,147.135.113.135/32,DIRECT,no-resolve
+- IP-CIDR,38.55.108.129/32,DIRECT,no-resolve
+- IP-CIDR,154.17.237.185/32,DIRECT,no-resolve
+- DEST-PORT,3478,Game-UDP
+- DEST-PORT,19302,Game-UDP
+- DEST-PORT,10000,Game-UDP
+- DOMAIN-SUFFIX,speedtest.net,Speedtest
+- DOMAIN-SUFFIX,hamivideo.hinet.net,TW-Streaming
+- DOMAIN-SUFFIX,litv.tv,TW-Streaming
+- DOMAIN-SUFFIX,kktv.me,TW-Streaming
+- DOMAIN-SUFFIX,catchplay.com,TW-Streaming
+- DOMAIN-SUFFIX,friday.tw,TW-Streaming
+- DOMAIN-SUFFIX,myvideo.net.tw,TW-Streaming
+- DOMAIN-SUFFIX,4gtv.tv,TW-Streaming
+- DOMAIN-SUFFIX,mod.cht.com.tw,TW-Streaming
+- DOMAIN-SUFFIX,cht.com.tw,TW-Streaming
+- GEOIP,CN,DIRECT,no-resolve
+- FINAL,Mode
